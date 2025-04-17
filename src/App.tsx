@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PublicLayout from "@/layouts/public-layout";
 import HomePage from "@/routes/Home";
 import MainLayout from "@/layouts/main-layout";
-import ProtectedRoutes from "@/layouts/protected-routes";
+import ProtectRoutes from "@/layouts/protected-routes";
 import AuthenticateLayout from "@/layouts/auth-layout";
 import SigninPage from "./routes/signin";
 import SignupPage from "./routes/signup";
@@ -21,7 +21,15 @@ function App() {
           <Route path="/signup/*" element={<SignupPage />} />
         </Route>
         {/* protected routes */}
-          <Route element={<ProtectedRoutes><MainLayout/></ProtectedRoutes>}/>
+        <Route
+          element={
+            <ProtectRoutes>
+              <MainLayout />
+            </ProtectRoutes>
+          }
+        >
+          {/* add protected routes here */}
+        </Route>
       </Routes>
     </Router>
   );
