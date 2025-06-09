@@ -1,25 +1,26 @@
 import { cn } from "@/lib/utils";
 import { useAuth } from "@clerk/clerk-react";
-import { LogoContainer } from "./LogoContainer";
 import { Container } from "./container";
-import { NavigationRoutes } from "./navigationroutes";
+import { LogoContainer } from "./logo-container";
+import { NavigationRoutes } from "./navigation-routes";
 import { NavLink } from "react-router-dom";
-import { Profilecontainer } from "./profilecontainer";
-import { Togglecontainer } from "./togglecontainer";
+import { ProfileContainer } from "./profile-container";
+import { ToggleContainer } from "./toggle-container";
 
 const Header = () => {
   const { userId } = useAuth();
+
   return (
     <header
-      className={cn(
-        "w-full border-b-2 duration-250 transition-all ease-in-out"
-      )}
+      className={cn("w-full border-b duration-150 transition-all ease-in-out")}
     >
       <Container>
         <div className="flex items-center gap-4 w-full">
+          {/* logo section */}
           <LogoContainer />
 
-          <nav className="hidden md:flex items-center gap-6">
+          {/* navigation section */}
+          <nav className="hidden md:flex items-center gap-3">
             <NavigationRoutes />
             {userId && (
               <NavLink
@@ -31,13 +32,17 @@ const Header = () => {
                   )
                 }
               >
-                Take an Interview
+                Take An Interview
               </NavLink>
             )}
           </nav>
+
           <div className="ml-auto flex items-center gap-6">
-            <Profilecontainer />
-            <Togglecontainer/>
+            {/* profile section */}
+            <ProfileContainer />
+
+            {/* mobile toggle section */}
+            <ToggleContainer />
           </div>
         </div>
       </Container>

@@ -8,7 +8,7 @@ export const MainRoutes = [
     href: "/contact",
   },
   {
-      label: "About Us",
+    label: "About Us",
     href: "/about",
   },
   {
